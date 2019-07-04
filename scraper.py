@@ -15,10 +15,6 @@ from BeautifulSoup import BeautifulSoup
 import os
 import mechanize
 
-
-auth1 = tweepy.auth.OAuthHandler(TWEEPY_CONSUMER_KEY, TWEEPY_CONSUMER_SECRET)
-auth1.set_access_token(TWEEPY_ACCESS_TOKEN, TWEEPY_ACCESS_TOKEN_SECRET)
-api = tweepy.API(auth1)
 def emailit(record): # can use this function if want to email update instead of tweet it
 
 # !!! Important, way this is setup it will only email if it hasn't been tweeted; if want to do both; should add the
