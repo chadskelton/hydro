@@ -83,14 +83,14 @@ def emailit(record): # can use this function if want to email update instead of 
             
             # Writing the message
             
-            fromaddr = 'sunnewsbot@gmail.com'
+            fromaddr = 'bchydrobot@gmail.com'
             toaddrs  = ['cskelton@vancouversun.com','cskeltonnews@gmail.com'] # or adrienne or bev
             msg = "Subject: New court ruling - " + record["citation"] + "\nTo: cskelton@vancouversun.com; cskeltonnews@gmail.com\n\nJust posted from " + record["type"] + ": '" + CitationText + "' " + record["url"]
             
             # Gmail login
             
-            username = 'sunnewsbot'
-            password = 'NOT SAYING'
+            username = 'bchydrobot'
+            password = os.environ['MORPH_PASSWORD']
             
             # Sending the mail 
             
