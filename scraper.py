@@ -52,7 +52,7 @@ def scrape_hydro(url): # in case page changes
     
     print section
     
-    if 'Vancouver' in section:
+    if 'Vancouver' in section.text:
         print "Outages in Vancouver"
     else:
         print "No outages in Vancouver"
