@@ -63,7 +63,9 @@ def scrape_hydro(url): # in case page changes
     
     soup = BeautifulSoup(htmlpage)
     
-    print soup
+    section = soup.find ("div", {"class" : "current-521980323"})
+    
+    print section
 
     '''
     decisions = table.findAll ("a")
