@@ -51,12 +51,12 @@ def scrape_hydro(url): # in case page changes
     section = soup.find ("div", {"id" : "current-521980323"})
     
     print section
-    
-    if 'Maple Ridge' in section.text:
-        print "Outages in Maple Ridge"
-        emailit("Subject: Power outage in Maple Ridge" + "\nTo: cskeltondata@gmail.com\n\nPower outage in Maple Ridge"
-    else:
-        print "No outages in Maple Ridge"      
+        
+        if 'Maple Ridge' in section.text:
+                print "Outages in Maple Ridge"
+                emailit("Subject: Power outage in Maple Ridge" + "\nTo: cskeltondata@gmail.com\n\nPower outage in Maple Ridge"
+        else:
+                print "No outages in Maple Ridge"      
         
     '''
     decisions = table.findAll ("a")
