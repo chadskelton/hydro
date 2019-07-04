@@ -63,7 +63,7 @@ def scrape_hydro(url): # in case page changes
     
     soup = BeautifulSoup(htmlpage)
     
-    section = soup.find ("div", {"class" : "current-521980323"})
+    section = soup.find ("table", {"class" : "current-521980323"})
     
     print section
 
