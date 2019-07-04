@@ -66,6 +66,11 @@ def scrape_hydro(url): # in case page changes
     section = soup.find ("div", {"id" : "current-521980323"})
     
     print section
+    
+    if 'Vancouver' in section:
+        print "Outages in Vancouver"
+    else:
+        print "No outages in Vancouver"
 
     '''
     decisions = table.findAll ("a")
