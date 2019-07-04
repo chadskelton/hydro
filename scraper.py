@@ -15,29 +15,16 @@ from BeautifulSoup import BeautifulSoup
 import os
 import mechanize
 
-def emailit(record): # can use this function if want to email update instead of tweet it
+def emailit(msg): # can use this function if want to email update instead of tweet it
 
 # !!! Important, way this is setup it will only email if it hasn't been tweeted; if want to do both; should add the
 # email stuff to the tweet one !!!
 
-    CitationText = record["citation"]
-        
-    query = "SELECT count(*) FROM swdata WHERE url = '" + record["url"] + "'"
-    count = scraperwiki.sqlite.execute(query)
-    countcheck = count['data'][0][0]
-    if countcheck > 0:
-        print "Already in database"
-    if countcheck == 0:
         try:
-            print "New record"
-            scraperwiki.sqlite.save(['url'], record)
-            
-            # Writing the message
             
             fromaddr = 'bchydrobot@gmail.com'
-            toaddrs  = ['cskelton@vancouversun.com','cskeltonnews@gmail.com'] # or adrienne or bev
-            msg = "Subject: New court ruling - " + record["citation"] + "\nTo: cskelton@vancouversun.com; cskeltonnews@gmail.com\n\nJust posted from " + record["type"] + ": '" + CitationText + "' " + record["url"]
-            
+            toaddrs  = ['cskeltondata@gmail.com']
+
             # Gmail login
             
             username = 'bchydrobot'
@@ -50,8 +37,6 @@ def emailit(record): # can use this function if want to email update instead of 
             server.login(username,password)
             server.sendmail(fromaddr, toaddrs, msg)
             server.quit()
-            
-            time.sleep(30)
             
         except:
             print "Unable to add to table or email"
@@ -72,6 +57,10 @@ def scrape_hydro(url): # in case page changes
     else:
         print "No outages in Vancouver"
 
+    # msg = "Subject: Power outage in White Rock" + "\nTo: cskeltondata@gmail.com\n\nPower outage in White Rock"
+            
+        
+        
     '''
     decisions = table.findAll ("a")
     
