@@ -52,9 +52,9 @@ def scrape_hydro(url): # in case page changes
     
     print section
         
-    if 'Maple Ridge' in section.text:
-        print "Outages in Maple Ridge"
-        emailit("Subject: Power outage in Maple Ridge" + "\nTo: cskeltondata@gmail.com\n\nPower outage in Maple Ridge")   
+    if 'White Rock' in section.text:
+        print "Outages in White Rock"
+        emailit("Subject: Power outage in White Rock" + "\nTo: cskeltondata@gmail.com\n\nPower outage in White Rock")   
     else:
         "No outages in Maple Ridge"
     '''
