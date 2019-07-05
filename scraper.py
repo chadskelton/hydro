@@ -50,7 +50,7 @@ def scrape_hydro(url): # in case page changes
     
     section = soup.find ("div", {"id" : "current-521980323"})
     
-    print section
+    # print section
         
     if 'White Rock' in section.text:
         print "Outages in White Rock"
@@ -74,4 +74,4 @@ for x in range (0, 22):
     print x
  
     scrape_hydro("https://www.bchydro.com/power-outages/app/outage-list.html#current-521980323")
-    time.sleep(3600) # wait one hour, change this to 3600 seconds
+    time.sleep(10) # wait one hour, change this to 3600 seconds
