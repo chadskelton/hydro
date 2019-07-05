@@ -74,4 +74,4 @@ for x in range (0, 22):
     print "Cycle:" + str(x)
  
     scrape_hydro("https://www.bchydro.com/power-outages/app/outage-list.html#current-521980323")
-    time.sleep(10) # wait one hour, change this to 3600 seconds
+    time.sleep(3600) # wait one hour, change this to 3600 seconds
