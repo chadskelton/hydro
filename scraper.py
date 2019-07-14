@@ -72,7 +72,7 @@ def scrape_hydro(url): # in case page changes
         
     '''
 
-for x in range (0, 22):
+for x in range (0, 15): # trying 15 instead of 22
     print "Cycle:" + str(x)
  
     scrape_hydro("https://www.bchydro.com/power-outages/app/outage-list.html#current-521980323")
