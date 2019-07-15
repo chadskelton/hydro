@@ -15,32 +15,44 @@ from BeautifulSoup import BeautifulSoup
 import os
 import mechanize
 
-def emailit(msg): # can use this function if want to email update instead of tweet it
+def emailit(record): # can use this function if want to email update instead of tweet it
 
 # !!! Important, way this is setup it will only email if it hasn't been tweeted; if want to do both; should add the
 # email stuff to the tweet one !!!
+	time.sleep(60)
+	
+	query = "SELECT count(*) FROM swdata WHERE url = '" + record["updated"] + "'"
+	count = scraperwiki.sqlite.execute(query)
+    	countcheck = count['data'][0][0]
+    	if countcheck > 0:
+        	print "Already in database"
+    	if countcheck == 0:
+        	try:
+			print "New record"
+			scraperwiki.sqlite.save(['updated'], record)
+	
+            
+			fromaddr = 'bchydrobot@gmail.com'
+			toaddrs  = ['cskeltondata@gmail.com']
+			msg = "Subject: Power outage in White Rock" + "\nTo: cskeltondata@gmail.com\n\nPower outage in White Rock at" + record["area"] + "affecting " + record["out"])
 
-        try:
-            
-            fromaddr = 'bchydrobot@gmail.com'
-            toaddrs  = ['cskeltondata@gmail.com']
+			# Gmail login
 
-            # Gmail login
-            
-            username = 'bchydrobot'
-            password = os.environ['MORPH_PASSWORD']
-            
-            # Sending the mail 
-            
-            server = smtplib.SMTP("smtp.gmail.com:587")
-            server.starttls()
-            server.login(username,password)
-            server.sendmail(fromaddr, toaddrs, msg)
-            server.quit()
-            
-        except:
-            print "Unable to add to table or email"
-    
+			username = 'bchydrobot'
+			password = os.environ['MORPH_PASSWORD']
+
+			# Sending the mail 
+
+			server = smtplib.SMTP("smtp.gmail.com:587")
+			server.starttls()
+			server.login(username,password)
+			server.sendmail(fromaddr, toaddrs, msg)
+			server.quit()
+			
+			
+		except:
+			print "Unable to add to table or email"
+
 def scrape_hydro(url): # in case page changes
 
     html = requests.get(url)
@@ -70,10 +82,12 @@ def scrape_hydro(url): # in case page changes
                 record["out"] = cells[4].text
                 record["cause"] = cells[5].text
                 record["updated"] = cells[6].text
-                
-                if record["municipality" = "White Rock" then:
-                          print "Outages in White Rock"
-                          emailit("Subject: Power outage in White Rock" + "\nTo: cskeltondata@gmail.com\n\nPower outage in White Rock at" + record["area"] + "affecting " + record["out"])
+		
+		print record
+                # if "White Rock" in record["municipality"]:
+                if "Surrey" in record["municipality"]:
+                          print "Outage in White Rock"
+                          emailit(record)
                 else:
                           print "No outages in White Rock"
         except:  
@@ -90,20 +104,8 @@ def scrape_hydro(url): # in case page changes
         print "Couldn't check for White Rock (possibly blank page)"
 '''
 
-    '''
-    decisions = table.findAll ("a")
-    
-    for decision in decisions:
-        record = {}
-        record["type"] = "B.C. Supreme Court"
-        record["citation"] = decision.text
-        record["url"] = 'http://www.courts.gov.bc.ca' + decision.get('href')
-        tweetit(record)
-        
-    '''
-
-for x in range (0, 15): # trying 15 instead of 22
+for x in range (0, 1): # trying 15 instead of 22
     print "Cycle:" + str(x)
  
     scrape_hydro("https://www.bchydro.com/power-outages/app/outage-list.html#current-521980323")
-    time.sleep(3600) # wait one hour, change this to 3600 seconds
+    # time.sleep(3600) # wait one hour, change this to 3600 seconds
