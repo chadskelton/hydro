@@ -62,7 +62,7 @@ def scrape_hydro(url): # in case page changes
         cells = row.findAll("td")
             
         try:
-                record = {}
+		record = {}
                 record["municipality"] = cells[0].text
                 record["offsince"] = cells[1].text
                 record["status"] = cells[2].text
