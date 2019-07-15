@@ -15,6 +15,13 @@ from BeautifulSoup import BeautifulSoup
 import os
 import mechanize
 
+record = {}
+record["municipality"] = "Test"
+record["offsince"] = "This is a test record"
+record["status"] =  "http://vancouversun.com/"
+record["updated"] =  "http://vancouversun.com/"
+scraperwiki.sqlite.save(['updated'], record)
+
 def emailit(record): # can use this function if want to email update instead of tweet it
 
 # !!! Important, way this is setup it will only email if it hasn't been tweeted; if want to do both; should add the
