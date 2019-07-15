@@ -26,7 +26,7 @@ def emailit(record): # can use this function if want to email update instead of 
 
 # !!! Important, way this is setup it will only email if it hasn't been tweeted; if want to do both; should add the
 # email stuff to the tweet one !!!
-	# time.sleep(60)
+	time.sleep(60)
 	# add back in after testing complete
 	
 	# remove checking of database and try just emailing
