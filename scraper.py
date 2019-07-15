@@ -76,7 +76,9 @@ def scrape_hydro(url): # in case page changes
                           emailit("Subject: Power outage in White Rock" + "\nTo: cskeltondata@gmail.com\n\nPower outage in White Rock at" + record["area"] + "affecting " + record["out"])
                 else:
                           print "No outages in White Rock"
+        except:  
                           
+              print 'Problem scraping row'            
 '''
     try:    
         if 'White Rock' in section.text:
