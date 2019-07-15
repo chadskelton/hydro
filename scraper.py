@@ -95,7 +95,7 @@ def scrape_hydro(url): # in case page changes
 		
 		print record
                 # change from Surrey to White Rock
-                if "Surrey" in record["municipality"]:
+                if "White Rock" in record["municipality"]:
                           print "Outage in White Rock"
                           emailit(record)
                 else:
@@ -114,8 +114,8 @@ def scrape_hydro(url): # in case page changes
         print "Couldn't check for White Rock (possibly blank page)"
 '''
 
-# for x in range (0, 1): # trying 15 instead of 22
-# print "Cycle:" + str(x)
+for x in range (0, 15): # trying 15 instead of 22
+	print "Cycle:" + str(x)
  
-scrape_hydro("https://www.bchydro.com/power-outages/app/outage-list.html#current-521980323")
-# time.sleep(3600) # wait one hour, change this to 3600 seconds
+	scrape_hydro("https://www.bchydro.com/power-outages/app/outage-list.html#current-521980323")
+	time.sleep(3600) # wait one hour, change this to 3600 seconds
