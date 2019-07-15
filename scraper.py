@@ -112,7 +112,7 @@ def scrape_hydro(url): # in case page changes
 '''
 
 # for x in range (0, 1): # trying 15 instead of 22
-print "Cycle:" + str(x)
+# print "Cycle:" + str(x)
  
 scrape_hydro("https://www.bchydro.com/power-outages/app/outage-list.html#current-521980323")
 # time.sleep(3600) # wait one hour, change this to 3600 seconds
