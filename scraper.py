@@ -58,6 +58,25 @@ def scrape_hydro(url): # in case page changes
         
     for row in rows:
         print row
+
+        cells = row.findAll("td")
+            
+        try:
+                record = {}
+                record["municipality"] = cells[0].text
+                record["offsince"] = cells[1].text
+                record["status"] = cells[2].text
+                record["area"] = cells[3].text
+                record["out"] = cells[4].text
+                record["cause"] = cells[5].text
+                record["updated"] = cells[6].text
+                
+                if record["municipality" = "White Rock" then:
+                          print "Outages in White Rock"
+                          emailit("Subject: Power outage in White Rock" + "\nTo: cskeltondata@gmail.com\n\nPower outage in White Rock at" + record["area"] + "affecting " + record["out"])
+                else:
+                          print "No outages in White Rock"
+                          
 '''
     try:    
         if 'White Rock' in section.text:
