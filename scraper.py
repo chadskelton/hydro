@@ -34,7 +34,7 @@ def emailit(record): # can use this function if want to email update instead of 
             
 			fromaddr = 'bchydrobot@gmail.com'
 			toaddrs  = ['cskeltondata@gmail.com']
-			msg = "Subject: Power outage in White Rock" + "\nTo: cskeltondata@gmail.com\n\nPower outage in White Rock at" + record["area"] + "affecting " + record["out"])
+			msg = "Subject: Power outage in White Rock" + "\nTo: cskeltondata@gmail.com\n\nPower outage in White Rock at" + record["area"] + "affecting " + record["out"]
 
 			# Gmail login
 
