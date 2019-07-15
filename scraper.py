@@ -79,7 +79,7 @@ def scrape_hydro(url): # in case page changes
     rows = table.findAll("tr")
         
     for row in rows:
-        print row
+        # print row
 
         cells = row.findAll("td")
             
