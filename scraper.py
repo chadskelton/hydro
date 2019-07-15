@@ -29,6 +29,8 @@ def emailit(record): # can use this function if want to email update instead of 
 	# time.sleep(60)
 	# add back in after testing complete
 	
+	# remove checking of database and try just emailing
+	'''
 	query = "SELECT count(*) FROM swdata WHERE url = '" + record["updated"] + "'"
 	count = scraperwiki.sqlite.execute(query)
     	countcheck = count['data'][0][0]
@@ -38,28 +40,28 @@ def emailit(record): # can use this function if want to email update instead of 
         	# try:
 		print "New record"
 		scraperwiki.sqlite.save(['updated'], record)
+	'''
+
+	fromaddr = 'bchydrobot@gmail.com'
+	toaddrs  = ['cskeltondata@gmail.com']
+	msg = "Subject: Power outage in White Rock" + "\nTo: cskeltondata@gmail.com\n\nPower outage in White Rock at" + record["area"] + "affecting " + record["out"]
+
+	# Gmail login
+
+	username = 'bchydrobot'
+	password = os.environ['MORPH_PASSWORD']
+
+	# Sending the mail 
+
+	server = smtplib.SMTP("smtp.gmail.com:587")
+	server.starttls()
+	server.login(username,password)
+	server.sendmail(fromaddr, toaddrs, msg)
+	server.quit()
 
 
-		fromaddr = 'bchydrobot@gmail.com'
-		toaddrs  = ['cskeltondata@gmail.com']
-		msg = "Subject: Power outage in White Rock" + "\nTo: cskeltondata@gmail.com\n\nPower outage in White Rock at" + record["area"] + "affecting " + record["out"]
-
-		# Gmail login
-
-		username = 'bchydrobot'
-		password = os.environ['MORPH_PASSWORD']
-
-		# Sending the mail 
-
-		server = smtplib.SMTP("smtp.gmail.com:587")
-		server.starttls()
-		server.login(username,password)
-		server.sendmail(fromaddr, toaddrs, msg)
-		server.quit()
-			
-			
-		# except:
-			# print "Unable to add to table or email"
+	# except:
+		# print "Unable to add to table or email"
 
 def scrape_hydro(url): # in case page changes
 
