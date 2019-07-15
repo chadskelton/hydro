@@ -94,8 +94,8 @@ def scrape_hydro(url): # in case page changes
                 record["updated"] = cells[6].text
 		
 		print record
-                # if "White Rock" in record["municipality"]:
-                if "Surrey" in record["municipality"]:
+                # 
+                if "White Rock" in record["municipality"]:
                           print "Outage in White Rock"
                           emailit(record)
                 else:
