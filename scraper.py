@@ -51,6 +51,14 @@ def scrape_hydro(url): # in case page changes
     section = soup.find ("div", {"id" : "current-521980323"})
     
     # print section
+        
+    table = section.find ("table", {"class": "municipality-list table-striped scroll-body sortable-table"})
+
+    rows = table.findAll("tr")
+        
+    for row in rows:
+        print row
+'''
     try:    
         if 'White Rock' in section.text:
             print "Outages in White Rock"
@@ -59,7 +67,8 @@ def scrape_hydro(url): # in case page changes
             print "No outages in White Rock"
     except:    
         print "Couldn't check for White Rock (possibly blank page)"
-        
+'''
+
     '''
     decisions = table.findAll ("a")
     
