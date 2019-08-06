@@ -43,7 +43,10 @@ def emailit(record): # can use this function if want to email update instead of 
 	'''
 
 	fromaddr = 'bchydrobot@gmail.com'
-	toaddrs  = ['cskeltondata@gmail.com']
+	# toaddrs  = ['cskeltondata@gmail.com']
+	emailone = os.environ['MORPH_EMAILONE']
+	emailtwo = os.environ['MORPH_EMAILTWO']
+	toaddrs  = [emailone, emailtwo]
 	msg = "Subject: Power outage in White Rock" + "\nTo: cskeltondata@gmail.com\n\nPower outage in White Rock at \n" + record["area"] + "\naffecting " + record["out"]
 
 	# Gmail login
@@ -114,7 +117,7 @@ def scrape_hydro(url): # in case page changes
         print "Couldn't check for White Rock (possibly blank page)"
 '''
 
-for x in range (0, 18): # trying 18 - errors if runs longer than one day
+for x in range (0, 22): # trying 18 - errors if runs longer than one day
 	print "Cycle:" + str(x)
  
 	try:
