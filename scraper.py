@@ -98,7 +98,7 @@ def scrape_hydro(url): # in case page changes
 		
 		print record
                 # change from Sechelt to White Rock
-                if "Sechelt" in record["municipality"]:
+                if "White Rock" in record["municipality"]:
                           print "Outage in White Rock"
                           emailit(record)
                 else:
