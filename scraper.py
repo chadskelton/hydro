@@ -117,7 +117,7 @@ def scrape_hydro(url): # in case page changes
         print "Couldn't check for White Rock (possibly blank page)"
 '''
 
-for x in range (0, 22): # trying 18 - errors if runs longer than one day
+for x in range (0, 16): # trying 16 - at 21, often 15+ hour delay between scrapes
 	print "Cycle:" + str(x)
  
 	try:
